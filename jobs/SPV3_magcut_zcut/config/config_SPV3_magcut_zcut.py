@@ -174,7 +174,7 @@ if ell_cuts:
     covariance_cfg['cov_filename'].replace('_{ndim:d}D', 'kmaxhoverMpc{kmax_h_over_Mpc:.03f}_{ndim:d}D')
 
 Sijkl_cfg = {
-    'wf_input_folder': f'{SPV3_folder}/InputFiles/InputRSD/WiRSDFid',
+    'wf_input_folder': f'{SPV3_folder}/InputFiles/InputRSD/notyetuploaded',
     'wf_WL_input_filename': 'WiWL-{EP_or_ED:s}{zbins:02d}-MS{magcut_source:03d}-ZS{zcut_source:02d}.dat',
     'wf_GC_input_filename': 'WiGC-{EP_or_ED:s}{zbins:02d}-ML{magcut_source:03d}-ZL{zcut_source:02d}.dat',
     'wf_normalization': 'IST',

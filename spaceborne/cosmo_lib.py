@@ -7,6 +7,7 @@ from scipy.integrate import simpson as simps
 
 import pyccl as ccl
 from spaceborne import sb_lib as sl
+from spaceborne import constants
 
 # ! prefactor for limber and curved-sky corrections
 # prefactor = np.array(
@@ -24,7 +25,7 @@ from spaceborne import sb_lib as sl
 # TODO create function to compute pk from CAMB, with a vectorized k or z
 
 
-c = 299792.458  # km/s
+c = constants.SPEED_OF_LIGHT
 
 
 def map_keys(input_dict, key_mapping):
@@ -304,7 +305,7 @@ def get_omega_nu0(m_nu, h, n_eff=3.046, neutrino_mass_fac=94.07):
     between the factors 93.14eV and 94.07eV
 
     Parameters:
-    # m_nu : float
+    m_nu : float
         Total neutrino mass (sum of the masses of the neutrino species).
     h : float
         Reduced Hubble constant.
@@ -340,9 +341,8 @@ def instantiate_cosmo_ccl_obj(fiducial_pars_dict, extra_parameters):
     # extra_parameters = {"camb": {"halofit_version": "mead2020_feedback",
     #                              "HMCode_logT_AGN": 7.75}}
 
-    fiducial_pars_dict = sl.flatten_dict(
-        fiducial_pars_dict
-    )  # flatten the dictionary if it's nested
+    # flatten the dictionary if it's nested
+    fiducial_pars_dict = sl.flatten_dict(fiducial_pars_dict)
 
     Omega_nu = get_omega_nu0(
         fiducial_pars_dict['m_nu'],
